@@ -90,7 +90,7 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -121,7 +121,7 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -149,7 +149,7 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
+
               compact: true,
             },
           },
@@ -207,6 +207,43 @@ module.exports = {
             ),
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
+          {
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract(
+                Object.assign({
+                    fallback: require.resolve('style-loader'),
+                    use: [
+                      {
+                        loader: require.resolve('css-loader'),
+                        options: {
+                          importLoaders: 1,
+                          minimize: true,
+                          sourceMap: true,
+                        },
+                      },
+                      {
+                        loader: require.resolve('postcss-loader'),
+                        options: {
+                          ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                          plugins: () => [
+                            require('postcss-flexbugs-fixes'),
+                            autoprefixer({
+                              browsers: [
+                                '>1%',
+                                'last 4 versions',
+                                'Firefox ESR',
+                                'not ie < 9', // React doesn't support IE8 anyway
+                              ],
+                              flexbox: 'no-2009',
+                            }),
+                          ],
+                        },
+                      },
+                      require.resolve('sass-loader')
+                    ],
+                }, extractTextPluginOptions)
+            )
+          },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
           // This loader don't uses a "test" so it will catch all modules
@@ -217,7 +254,17 @@ module.exports = {
             // it's runtime that would otherwise processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            exclude: [
+              /\.html$/,
+              /\.(js|jsx)$/,
+              /\.css$/,
+              /\.json$/,
+              /\.bmp$/,
+              /\.gif$/,
+              /\.scss$/,
+              /\.jpe?g$/,
+              /\.png$/,
+            ],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
