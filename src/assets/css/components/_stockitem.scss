@@ -1,0 +1,88 @@
+.stock-item {
+  display:flex;
+  align-items:center;
+  padding:20px;
+  margin:0;
+  font-size:2em;
+  margin:0;
+  transition:all .5s ease-in-out;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+
+  &:last-child {
+    margin:0;
+  }
+
+  &[value="up"] {
+    background: rgba($green,0.1);
+
+    .stock-item-status {
+      color:$green;
+      transform:rotate(-90deg);
+    }
+
+    .stock-item-price {
+      color:$green;
+    }
+  }
+
+  &[value="down"] {
+    background: rgba($red,0.1);
+
+    .stock-item-status {
+      color:$red;
+      transform:rotate(90deg);
+    }
+
+    .stock-item-price {
+      color:$red;
+    }
+  }
+
+  &[value="constant"] {
+    .stock-item-status, .stock-item-price {
+      opacity:0.25;
+    }
+  }
+
+  &[value="default"] {
+    background: rgba($white,0.1);
+  }
+
+  .stock-item-left-half, .stock-item-right-half {
+    display:inherit;
+    align-items:inherit;
+  }
+
+  .stock-item-right-half {
+    margin-left:auto;
+  }
+
+  .stock-item-status {
+    transform:rotate(0);
+    transition:all .5s ease;
+  }
+
+  .stock-item-name {
+    margin:0 10px;
+    text-transform:uppercase;
+    font-weight:bold;
+    letter-spacing:2px;
+  }
+
+  .stock-item-updated-at {
+    font-size:0.5em;
+    opacity:0.2;
+  }
+
+  .stock-item-diff {
+    font-size:0.5em;
+    opacity:0.5;
+  }
+
+  .stock-item-price {
+    margin-left:5px;
+  }
+}
