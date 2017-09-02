@@ -80,6 +80,9 @@ yarn-error.log*
 # dependencies
 /node_modules
 
+#production
+/build
+
 # testing
 /coverage
 
