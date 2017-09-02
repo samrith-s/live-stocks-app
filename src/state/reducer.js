@@ -8,11 +8,22 @@ let defaultState = {
 
 export default function Reducer(state = _.cloneDeep(defaultState), action) {
   let newState = _.cloneDeep(state);
+  let stock = null;
 
   switch(action.type) {
     case Actions.MESSAGE_RECEIVED:
       newState.data = addDataToHash(newState.data, JSON.parse(action.message));
       dataStore('set',newState.data);
+      return newState;
+
+    case Actions.PIN_STOCK:
+      stock = newState.data[action.stock.name];
+      stock.pinned = true;
+      return newState;
+
+    case Actions.UNPIN_STOCK:
+      stock = newState.data[action.stock.name];
+      stock.pinned = false;
       return newState;
 
     default:

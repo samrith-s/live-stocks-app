@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700|Roboto+Slab:400,700');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('http://about.coolecho.net/common/count.min.css');
 @import './colors';
+
+#root {
+  background:$gray-dark;
+}
 
 .app {
   position: relative;
@@ -10,27 +15,71 @@
   font-size:14px;
   background:$gray-dark;
   color:$white;
-  overflow-y:auto;
-  overflow-x:hidden;
+  overflow:hidden;
+
+  .inner-scroller {
+    padding:20px 0;
+  }
+
+  .inner {
+    max-width:600px;
+    margin:0 auto;
+
+    .list-header {
+      display: flex;
+      align-items:center;
+    }
+
+    h3 {
+      margin:0 0 10px;
+      font-size:1.25em;
+      color:rgba($white,0.25);
+      font-family: 'Roboto Slab', sans-serif;
+      font-weight:normal;
+
+      i.fa { margin-right:5px; }
+    }
+
+    .sorting-actions {
+      margin-left:auto;
+      display: flex;
+      align-items:center;
+      font-size:1.3em;
+
+      i.fa {
+        padding:7px;
+        cursor: pointer;
+        opacity:0.25;
+        transition:all .5s ease;
+
+        &.active {
+          opacity:1;
+        }
+
+        &:active {
+          transform:scale(1.1);
+        }
+      }
+
+      .key-sort {
+        margin-right:5px;
+      }
+
+      .order-by, .key-sort {
+        border-radius:5px;
+        background:lighten($gray-dark,5%);
+      }
+    }
+  }
+
+  .pinned-stocks {
+    position:relative;
+    margin-bottom:20px;
+  }
 
   .stock-list-container {
-    display: flex;
-    align-items:center;
-    height:100%;
-    overflow:hidden;
-
-    .left-half, .right-half {
-      display:block;
-      width:100%;
-      height:100%;
-      overflow-y:auto;
-      position:relative;
-    }
-
-    .right-half {
-      font-family:'Roboto Slab', sans-serif;
-      font-size:50px;
-    }
+    margin:0 auto;
+    position:relative;
   }
 
   @import './components/stockitem';

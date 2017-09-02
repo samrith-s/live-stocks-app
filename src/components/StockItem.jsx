@@ -5,7 +5,6 @@ import CountUp from 'react-countup';
 
 export default class StockItem extends React.Component {
   componentDidMount() {
-    this.height = this.ref.clientHeight;
     this.opacity = 1;
   }
 
@@ -13,7 +12,12 @@ export default class StockItem extends React.Component {
     let stock = this.props.data;
 
     return (
-      <div className="stock-item" value={stock.status} ref={ref => this.ref = ref} style={{top:this.props.index*(this.height||0), opacity: this.opacity||0}}>
+      <div className="stock-item"
+        value={stock.status}
+        ref={ref => this.ref = ref}
+        style={{opacity: this.opacity||0.25}}
+        onClick={stock.pinned ? this.props.actions.unpinStock.bind(this,stock) : this.props.actions.pinStock.bind(this,stock)}
+      >
         <div className="stock-item-left-half">
           <div className="stock-item-status" value={stock.status}>&#9654;</div>
           <div className="stock-item-name">{stock.name}</div>
@@ -22,7 +26,7 @@ export default class StockItem extends React.Component {
         <div className="stock-item-right-half">
           {
             stock.diff ?
-              <div className="stock-item-diff">({`$${stock.diff.value.toFixed(2)}`})</div>
+              <div className="stock-item-diff">({`${stock.diff.value > 0 ? "+" : "-"}$${Math.abs(stock.diff.value.toFixed(2))}`})</div>
             :
               null
           }

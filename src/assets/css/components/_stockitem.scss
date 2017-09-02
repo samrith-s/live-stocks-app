@@ -2,17 +2,19 @@
   display:flex;
   align-items:center;
   padding:20px;
-  margin:0;
+  margin:5px 0;
   font-size:2em;
-  margin:0;
   transition:all .5s ease-in-out;
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
+  position:relative;
+  border-radius:5px;
+  cursor:pointer;
 
-  &:last-child {
-    margin:0;
+  &:active {
+    transform:scale(1.05);
+  }
+
+  &:hover {
+    transform:scale(1.05);
   }
 
   &[value="up"] {
@@ -84,5 +86,6 @@
 
   .stock-item-price {
     margin-left:5px;
+    transition:all .5s ease-in-out;
   }
 }
