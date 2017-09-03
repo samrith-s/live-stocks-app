@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import Actions from './actions';
 
-const HISTORY_SIZE = 100;
+const HISTORY_SIZE = 10;
 
 let defaultState = {
   data: dataStore('get')
