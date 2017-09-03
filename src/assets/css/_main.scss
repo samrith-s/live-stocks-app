@@ -42,7 +42,7 @@
       background-image:url('#{$IMG_URL}/stocks-icon.png');
       background-size:cover;
       background-position:center;
-      vertical-align:middle;
+      vertical-align:sub;
       margin-right:10px;
     }
   }
@@ -68,7 +68,7 @@
 
       p {
         margin: 5px 0 10px;
-        font-size:0.85em;
+        font-size:1.15em;
       }
     }
 
