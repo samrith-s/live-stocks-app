@@ -1,0 +1,14 @@
+@mixin Oswald($weight) {
+  font-family: 'Oswald', sans-serif;
+  font-weight: $weight;
+}
+
+@mixin OpenSans($weight) {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight:$weight;
+}
+
+@mixin YanoneKaffeesatz($weight) {
+  font-family:'Yanone Kaffeesatz', sans-serif;
+  font-weight:$weight;
+}
