@@ -10,6 +10,7 @@ export default class AppWrapper extends React.Component {
     this.state = {
       sortBy: 'price',
       orderBy: 'asc',
+      diffVal:'value',
       topScroll: 0
     }
   }
@@ -23,7 +24,7 @@ export default class AppWrapper extends React.Component {
     if(stocks)
       return stocks.map((stock, index) => {
         return (
-          <StockItem data={stock} index={index} key={`stock-item-${stock.name}`} actions={stockactions} />
+          <StockItem data={stock} index={index} key={`stock-item-${stock.name}`} actions={stockactions} diffVal={this.state.diffVal} />
         )
       });
   }
@@ -36,7 +37,7 @@ export default class AppWrapper extends React.Component {
     if(stocks && stocks.length>0)
       return stocks.map((stock,index) => {
         return (
-          <StockItem data={stock} index={index} key={`stock-item-pinned-${stock.name}`} actions={stockactions} />
+          <StockItem data={stock} index={index} key={`stock-item-pinned-${stock.name}`} actions={stockactions} diffVal={this.state.diffVal} />
         )
       })
     else
@@ -55,6 +56,11 @@ export default class AppWrapper extends React.Component {
     this.setState(_.merge({}, this.state, { orderBy: orderBy }));
   }
 
+  toggleDiffVal = () => {
+    let diffVal = this.state.diffVal==="value" ? "percent" : "value";
+    this.setState(_.merge({}, this.state, { diffVal: diffVal }));
+  }
+
   render() {
     let stocks = this.props.data || [];
     let stockactions = _.pick(this.props.actions || {}, ['pinStock', 'unpinStock']);
@@ -69,19 +75,27 @@ export default class AppWrapper extends React.Component {
             <Insights min={this.props.min || {}} max={this.props.max || {}} />
 
             <div className="pinned-stocks inner">
+              <div className="list-header not-inline">
+                <h3><i className="fa fa-thumb-tack" /> Pinned Stocks</h3>
+                <p>Pinned stocks are automatically sorted by name. Click on any pinned stock to unpin.</p>
+              </div>
               <div className="pinner-stocks-wrapper">
-                <div className="list-header not-inline">
-                  <h3><i className="fa fa-thumb-tack" /> Pinned Stocks</h3>
-                  <p>Pinned stocks are automatically sorted by name. Click on any pinned stock to unpin.</p>
-                </div>
                 {this.renderPinnedStocks(_.orderBy(stocks.filter(stock => stock.pinned), ['name'], ['asc']), stockactions)}
               </div>
             </div>
 
             <div className="stock-list-container inner">
               <div className="list-header">
+
                 <h3><i className="fa fa-line-chart" /> All Stocks</h3>
+
                 <div className="sorting-actions">
+                  <div className="switch" type={this.state.diffVal==="value"} onClick={this.toggleDiffVal} title="Show difference in value or percentage">
+                    <i className="fa fa-usd switch-left-label switch-label" />
+                    <div className="switch-btn" />
+                    <i className="fa fa-percent switch-right-label switch-label" />
+                  </div>
+
                   <div className="key-sort">
                     <i className={"fa fa-font" + this.getClass(this.state.sortBy, 'name')} title="Sort by name" onClick={this.changeSortBy.bind(this, 'name')} />
                     <i className={"fa fa-usd" + this.getClass(this.state.sortBy, 'price')} title="Sort by price" onClick={this.changeSortBy.bind(this, 'price')} />
@@ -91,6 +105,7 @@ export default class AppWrapper extends React.Component {
                     <i className={"fa fa-arrow-down" + this.getClass(this.state.orderBy, 'desc')} title="Descending" onClick={this.changeOrderBy.bind(this, 'desc')} />
                   </div>
                 </div>
+
               </div>
 
               {this.renderStocksList(_.orderBy(stocks.filter(stock => !stock.pinned),[this.state.sortBy],[this.state.orderBy]), stockactions)}
