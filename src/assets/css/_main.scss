@@ -5,6 +5,8 @@
 @import './colors';
 @import './mixins';
 
+@import './components/switch';
+
 #root {
   background:$gray-dark;
   @import './mediaqueries';
