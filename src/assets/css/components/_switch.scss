@@ -1,0 +1,53 @@
+.switch {
+  display: flex;
+  align-items:center;
+  margin:0 5px;
+  cursor:pointer;
+  padding:0;
+  background:lighten($gray-dark,5%);
+  border-radius:5px;
+
+  .switch-btn {
+    margin:0 3px;
+    border-radius:999px;
+    padding:3px;
+    border:1px solid lighten($gray-dark,15%);
+
+    &:before {
+      content:'';
+      display:block;
+      width:10px;
+      height:10px;
+      transition:all .5s ease;
+      background:lighten($gray-dark,30%);
+      border-radius:999px;
+      margin:0;
+    }
+  }
+
+  .switch-label {
+    transition:all .5s ease;
+    opacity:0.5;
+  }
+
+  &[type="true"] {
+    .switch-btn:before {
+      margin-right:20px;
+    }
+
+    .switch-left-label {
+      opacity:1!important;
+    }
+  }
+
+  &[type="false"] {
+    .switch-btn:before {
+      margin-left:20px;
+    }
+
+    .switch-right-label {
+      opacity:1!important;
+    }
+  }
+
+}
