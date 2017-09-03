@@ -7,13 +7,10 @@
   transition:all .5s ease-in-out;
   position:relative;
   border-radius:5px;
+  @include YanoneKaffeesatz(normal);
   cursor:pointer;
 
   &:active {
-    transform:scale(1.05);
-  }
-
-  &:hover {
     transform:scale(1.05);
   }
 
@@ -64,6 +61,8 @@
 
   .stock-item-status {
     transform:rotate(0);
+    margin-right:10px;
+    font-size:1.5em;
     transition:all .5s ease;
   }
 
