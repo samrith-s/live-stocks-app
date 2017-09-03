@@ -26,7 +26,7 @@ export default class StockItem extends React.Component {
         <div className="stock-item-right-half">
           {
             stock.diff ?
-              <div className="stock-item-diff">({`${stock.diff.value < 0 ? "-" : "+"}$${Math.abs(stock.diff.value.toFixed(2))}`})</div>
+              <div className="stock-item-diff">({`${stock.diff.value < 0 ? "-" : "+"}$${Math.abs(stock.diff.value ? stock.diff.value.toFixed(2): 0)}`})</div>
             :
               null
           }
