@@ -34,6 +34,7 @@
     text-transform:uppercase;
     @include YanoneKaffeesatz(bold);
     padding:0 20px 5px;
+    text-shadow:2px 2px $gray-dark, 4px 4px lighten($gray-dark,20%);
 
     i {
       display:inline-block;

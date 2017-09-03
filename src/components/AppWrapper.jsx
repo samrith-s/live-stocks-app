@@ -69,7 +69,7 @@ export default class AppWrapper extends React.Component {
       <div className="app">
           <div className="inner-scroller" ref={ref => this.scroller = ref}>
             <h3 className="logo inner">
-              <i className="logo" />Live Stocks App
+              Live Stocks App
             </h3>
 
             <Insights min={this.props.min || {}} max={this.props.max || {}} />
