@@ -35,11 +35,14 @@ function addDataToHash(hash, data) {
   if(data && data.length > 0) {
     data.map(([name, price], index) => {
       let newHash = hash[name] || {};
+      let history = newHash.history || [];
       newHash.status = getStatus(newHash.price, price);
       newHash.diff = getDifference(newHash.price, price);
       newHash.oldPrice = newHash.price;
       newHash.price = price;
       newHash.updatedAt = Date.now();
+      history.push(price);
+      newHash.history = history;
       hash[name] = newHash;
       return true;
     });
@@ -51,11 +54,11 @@ function addDataToHash(hash, data) {
 function getStatus(current,latest) {
   let status = 'default';
 
-  if(current && current-latest > 0)
+  if(current && latest-current > 0)
     status = 'up';
-  else if(current && current-latest < 0)
+  else if(current && latest-current < 0)
     status = 'down';
-  else if(current && current-latest===0)
+  else if(current && latest-current===0)
     status = 'constant'
 
   return status;
