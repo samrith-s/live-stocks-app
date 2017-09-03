@@ -2,6 +2,8 @@ import _ from 'lodash';
 
 import Actions from './actions';
 
+const HISTORY_SIZE = 100;
+
 let defaultState = {
   data: dataStore('get')
 }
@@ -41,6 +43,8 @@ function addDataToHash(hash, data) {
       newHash.oldPrice = newHash.price;
       newHash.price = price;
       newHash.updatedAt = Date.now();
+      if(history.length===HISTORY_SIZE)
+        history.shift();
       history.push(price);
       newHash.history = history;
       hash[name] = newHash;
