@@ -1,0 +1,44 @@
+.insights {
+  padding:10px;
+  @include YanoneKaffeesatz(normal);
+
+  .insight-band {
+    display: flex;
+    align-items:center;
+    width:100%;
+    border-radius:5px;
+    position:relative;
+    margin-right:5px;
+    font-size:2em;
+    padding:10px;
+    min-height:60px;
+    background:darken($gray-dark,2%);
+
+
+    .insight-band-inner {
+      display: flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+
+      span {
+        text-transform:uppercase;
+        opacity:0.2;
+        margin-right:10px;
+      }
+
+      h4 {
+        text-transform:uppercase;
+        margin-right:10px;
+      }
+
+      &.max {
+        color:$green;
+      }
+
+      &.min {
+        color:$red;
+      }
+    }
+  }
+}
