@@ -21,7 +21,7 @@ export const getData = state => {
 export const getMax = createSelector(
   getData,
   (data) => {
-    let maxObj = _.max(data, _.property('history')) || {};
+    let maxObj = _.orderBy(data, ['maxPrice'],['desc'])[0];
     return {
       name: maxObj.name,
       price: _.max(maxObj.history)
@@ -32,7 +32,7 @@ export const getMax = createSelector(
 export const getMin = createSelector(
   getData,
   (data) => {
-    let minObj = _.min(data, (item) => _.min(item, _.property('history'))) || {};
+    let minObj = _.orderBy(data, ['minPrice']['asc'])[0];
     return {
       name: minObj.name,
       price: _.min(minObj.history)

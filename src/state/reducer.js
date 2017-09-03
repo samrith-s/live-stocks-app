@@ -47,6 +47,8 @@ function addDataToHash(hash, data) {
         history.shift();
       history.push(price);
       newHash.history = history;
+      newHash.minPrice = _.min(newHash.history);
+      newHash.maxPrice = _.max(newHash.history);
       hash[name] = newHash;
       return true;
     });
