@@ -22,6 +22,26 @@
   color:$white;
   overflow:hidden;
 
+  a {
+    color:$white;
+    cursor:pointer;
+
+    &:link, &:active, &:visited {
+      color:lighten($gray-dark,15%);
+      transition:color .25s ease;
+    }
+    &:hover { color:$white; }
+  }
+
+  .github-link {
+    font-size:3em;
+    margin:0 auto;
+    display:inline-block;
+    left: 50%;
+    position:relative;
+    transform:translateX(-50%);
+  }
+
   .inner-scroller {
     padding:10px;
     overflow:auto;

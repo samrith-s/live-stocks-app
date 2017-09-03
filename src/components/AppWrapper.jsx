@@ -110,6 +110,10 @@ export default class AppWrapper extends React.Component {
 
               {this.renderStocksList(_.orderBy(stocks.filter(stock => !stock.pinned),[this.state.sortBy],[this.state.orderBy]), stockactions)}
             </div>
+
+            <a className="github-link" href="https://github.com/samrith-s/live-stocks-app">
+              <i className="fa fa-git-hub" />
+            </a>
         </div>
       </div>
     )
