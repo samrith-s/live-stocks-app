@@ -112,7 +112,7 @@ export default class AppWrapper extends React.Component {
             </div>
 
             <a className="github-link" href="https://github.com/samrith-s/live-stocks-app">
-              <i className="fa fa-git-hub" />
+              <i className="fa fa-github" />
             </a>
         </div>
       </div>
