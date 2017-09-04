@@ -36,14 +36,14 @@ This app has been made completely responsive for all devices. In larger screens 
 <img src="https://raw.githubusercontent.com/samrith-s/live-stocks-app/master/screenshots/laptop.png" alt="Laptops">
 
 ### Tablets
-<div style="text-align:center">
+<p align="center">
   <img src="https://raw.githubusercontent.com/samrith-s/live-stocks-app/master/screenshots/tablet.png" alt="Tablet" width="500" style="margin:0 auto;">
-</div>
+</p>
 
 ### Mobile Phones
-<div style="text-align:center">
+<p align="center">
   <img src="https://raw.githubusercontent.com/samrith-s/live-stocks-app/master/screenshots/mobile.png" alt="Mobile" width="500" style="margin:0 auto;">
-</div>
+</p>
 
 ## Thought Process
 All of the features present in this app have been weel thought of to make the end-result very usable and improve navigation and experience.
