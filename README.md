@@ -8,8 +8,8 @@ You can [view working application](samrith-s.github.io/live-stocks-app) on all d
 
 To run the app locally use the `npm run start` command and connect to the IP address mentioned in the terminal window to run the application on different devices.
 
-** Note: For the application to work on Chrome and Firefox, you will have to allow Mixed Content. **
-To know more about mixed content and how to enable it, follow this <a href="https://kb.iu.edu/d/bdny" target="_blank">link</a>.
+**Note: For the application to work on Chrome and Firefox, you will have to allow Mixed Content.
+To know more about mixed content and how to enable it, follow this <a href="https://kb.iu.edu/d/bdny" target="_blank">link</a>.**
 
 ## Table of Contents
 
